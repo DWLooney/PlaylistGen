@@ -1,0 +1,21 @@
+.header-url {
+    padding-top: 20px;
+    font-size: 25px;
+}
+.header-text {
+    font-size: 200%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.headerContainer {
+    align-self: center;
+    padding-top: 10px;
+    background-color: grey;
+    border: 2px solid black;
+}
+
+.input {
+    background-color: white;
+}
