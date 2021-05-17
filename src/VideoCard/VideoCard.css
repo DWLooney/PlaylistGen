@@ -1,6 +1,12 @@
-.Video-Thumb {
+.video-thumb {
     width: 300px;
-    height: 300px;
+    height: 200px;
     border: 3px solid blue;
-    padding-bottom: 10px;
+    padding: 10px;
+    margin: 10px;
+    float:left;
+    background-color: lightcoral;
+}
+.img{
+    margin:auto;
 }
