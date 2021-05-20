@@ -1,16 +1,31 @@
 package com.dwlooney.youtubegen;
 
-import java.util.concurrent.atomic.AtomicLong;
-
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
+import org.springframework.web.client.RestTemplate;
 
 public class SearchController {
-	@GetMapping("/search")
-	public String search(@RequestParam(value= "videoID", defaultValue = "") String videoID) {
+	private String searchType = "";
+	
+	public SearchController() {
+		
+	}
+	
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+	
+	@Bean
+	public String searchRelated(String videoId, String tags) {
+		RelatedSearchResult res = restTemplate.getForObject
+		
+	}
+	
+	//TODO stub
+	private String filterResults() {
 		return "";
 	}
 }

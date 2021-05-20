@@ -1,5 +1,8 @@
 package com.dwlooney.youtubegen;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class VideoInfo {
 	private String videoId;
 	private String publishedAt;
@@ -12,7 +15,7 @@ public class VideoInfo {
 	public VideoInfo() {
 		
 	}
-
+	@Id
 	public String getVideoId() {
 		return videoId;
 	}
