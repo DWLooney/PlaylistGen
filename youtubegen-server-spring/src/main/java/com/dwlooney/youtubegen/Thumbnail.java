@@ -10,6 +10,12 @@ public class Thumbnail {
 		
 	}
 	
+	public Thumbnail(String url, int width, int height) {
+		this.url = url;
+		this.width = width;
+		this.height = height;
+	}
+	
 	public String getUrl() {
 		return url;
 	}

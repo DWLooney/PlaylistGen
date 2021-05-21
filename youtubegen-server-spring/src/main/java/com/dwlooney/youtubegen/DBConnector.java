@@ -1,22 +1,29 @@
 package com.dwlooney.youtubegen;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class DBConnector {
 
 	@Autowired
 	private SearchRepository repo;
 	
-	//Empty constructor for compiler warning purposes
-	public DBConnector() {
-	}
-	
-	
-	public RelatedSearchResult getResults(String id) {
-		if(!repo.existsById(id)) {
-			//API Call here
-			
+	public RelatedSearchResult getResults(String searchId) {
+		Optional<RelatedSearchResult> out;
+		RelatedSearchResult res;
+		out = repo.findBySearchId(searchId);
+		if (out.isEmpty()) {
+			res = new RelatedSearchResult();
+		} else {
+			res = out.get();
 		}
-		return new RelatedSearchResult();
+		return res;
 	}
 	
+	public void putResult(RelatedSearchResult result) {
+		System.out.println("Putting Search Result:");
+		repo.save(result);
+	}
 }

@@ -1,5 +1,7 @@
 package com.dwlooney.youtubegen;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -8,18 +10,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.context.annotation.Bean;
 
+@SuppressWarnings("unused")
 @SpringBootApplication
 @RestController
 public class YoutubegenApplication {
 	
-	private DBConnector repoConnector = new DBConnector();
+	@Autowired
+	private SearchController controller;
 	
-	private String apiKey;
+	@Value("${spring.application.apiKey}")
+	private static String apiKey;
 	
 	public static void main(String[] args) {
-		if (args.length == 0) {
-			System.out.println("Youtube API key must be provided to run the microservice!");
-			System.out.println("Exiting...");
+		if (apiKey == "") {
+			System.err.println("Youtube API key must be provided to run the microservice!");
+			System.err.println("Exiting...");
 			
 			return;
 		} else {
@@ -37,7 +42,7 @@ public class YoutubegenApplication {
 	@GetMapping("/ytRelated")
 	public String getRelatedResults(@RequestParam(value="id", defaultValue = "") String videoID,
 									@RequestParam(value="tags", defaultValue = "") String filterTags) {
-		return "";
+		return controller.searchRelated(videoID, filterTags);
 	}
 	
 
