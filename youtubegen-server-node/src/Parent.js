@@ -1,7 +1,7 @@
 import React from 'react';
-import VideoMain from '../VideoMain/VideoMain'
-import VideoContainer from '../VideoContainer/VideoContainer'
-import Header from '../Header/Header'
+import VideoMain from './VideoMain'
+import VideoContainer from './VideoContainer'
+import Header from './Header'
 import { Container, Box, Button } from '@material-ui/core';
 
 class Parent extends React.Component {
@@ -15,8 +15,10 @@ class Parent extends React.Component {
 
     };
     performSearch(){
-        this.setState(state =>
-            ({url: this.state.url, id: this.state.id, search: true}));
+        console.log("performing search...")
+        this.setState((state, props) => { 
+            return {url: this.state.url, id: this.state.id, search: true} 
+        });
     };
     render() {
         return(
@@ -25,9 +27,7 @@ class Parent extends React.Component {
                     <Header parentCallback = {this.urlCallback} />
                 </Box>
                 <Box paddingTop="20px" paddingBottom="20px">
-                    <form>
-                        <Button onClick={this.performSearch} variant="contained">Perform search</Button>
-                    </form>
+                    <Button onClick={this.performSearch} variant="contained">Perform search</Button>
                 </Box>
                 <Box margin = "auto" title="Current Video" >
                     <VideoMain url = {this.state.url}/>

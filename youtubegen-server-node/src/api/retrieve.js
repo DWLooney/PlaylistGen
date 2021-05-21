@@ -1,17 +1,11 @@
-async function retrieve(searchQuery) {
+export async function retrieve(searchQuery) {
     var searchResults = "";
     const axios = require('axios');
-    axios.get(searchQuery)
+    await axios.get(searchQuery)
         .then(function (response) {
-            searchResults = JSON.parse(response);
-            if (searchResults.error !== null) {
-                return searchResults;
-            }
+            searchResults = response;
         })
         .catch(function (error) {
-            console.log(error);
         })
-    return searchResults;   
+    return searchResults.data;   
 }
-
-export default retrieve;

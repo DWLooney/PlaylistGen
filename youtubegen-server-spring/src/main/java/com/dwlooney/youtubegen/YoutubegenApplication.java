@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,12 +34,13 @@ public class YoutubegenApplication {
 
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return String.format("Hello %s!", name);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/ytRelated")
 	public String getRelatedResults(@RequestParam(value="id", defaultValue = "") String videoID,
 									@RequestParam(value="tags", defaultValue = "") String filterTags) {
