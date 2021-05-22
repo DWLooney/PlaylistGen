@@ -10,8 +10,15 @@ class Parent extends React.Component {
         this.performSearch = this.performSearch.bind(this);
         this.state = {url: "", id: "", search: false};
     }
+
+    videoClicked =  (videoId) => {
+        console.log("clicked");
+        this.setState({url: "https://www.youtube.com/embed/" + videoId, id: videoId, search:true})
+        window.scrollTo(0, 0);
+    }
+
     urlCallback = (childData) => {
-        this.setState({url: childData.url, id: childData.id, search: this.state.search})
+        this.setState({url: childData.url, id: childData.id, search: false})
 
     };
     performSearch(){
@@ -24,15 +31,15 @@ class Parent extends React.Component {
         return(
             <Container style={{backgroundColor: "lightgray", alignContent: "auto"}}>
                 <Box>
-                    <Header parentCallback = {this.urlCallback} />
+                    <Header performSearch = {this.urlCallback}/>
                 </Box>
                 <Box paddingTop="20px" paddingBottom="20px">
                     <Button onClick={this.performSearch} variant="contained">Perform search</Button>
                 </Box>
-                <Box margin = "auto" title="Current Video" >
+                <Box title="Current Video" >
                     <VideoMain url = {this.state.url}/>
                 </Box>
-                <VideoContainer id = {this.state.id} search = {this.state.search}/>
+                <VideoContainer id = {this.state.id} doSearch = {this.state.search} handleVideoClicked = {this.videoClicked}/>
             </Container>
         );
     }

@@ -12,22 +12,28 @@ function VideoContainer(props) {
     //Instantiate output on new api
     useEffect(() => {
         async function callAPI() {
+            if (results.length > 0) {
+                results.length = 0;
+            }
             let output = await getSearchResults("", props.id);
             if (output !== undefined) {
                 for(let idx = 0; idx < output.items.length; idx++) {
                     console.log("Creating card...");
                     console.dir(output.items[idx]);
                     if (output.items[idx].thumbnail !== null) {
-                        results.push(<VideoCard data = {output.items[idx]} key = {output.items[idx].videoId} />)
+                        results.push(<VideoCard handleClick = {() => props.handleVideoClicked(output.items[idx].videoId)} data = {output.items[idx]} key = {output.items[idx].videoId + idx}/>)
                     }
                 }
                 setResults(results);
             }
         }
-        callAPI()
-    }, [results, props.search, props.id])
+
+        if (props.doSearch) {
+            callAPI()
+        }
+    }, [results, props])
  
-    return(<Container fixed style={{backgroundColor: "lightGray", height: '100vh', padding:'10px'}}>{results}</Container>)
+    return(<Container fixed style={{backgroundColor: "lightGray", padding:'10px'}}>{results}</Container>)
     
 }
 export default VideoContainer;

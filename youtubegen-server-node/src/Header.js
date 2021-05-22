@@ -10,13 +10,16 @@ class Header extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    componentDidMount() {
+       this.handleChange({target: {value: 'https://www.youtube.com/watch?v=1VOWybJxQz0' }});
+    }
     handleChange(event) {
         if (event.target.value !== null) {
             this.setState({url:event.target.value});
             let videoData = transformUrlToEmbed(event.target.value);
             
             if (videoData.url !== "") {
-                this.props.parentCallback(videoData); 
+                this.props.performSearch(videoData); 
             }
         }
     }

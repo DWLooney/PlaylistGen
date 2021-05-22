@@ -24,7 +24,7 @@ public class YoutubegenApplication {
 	
 	public static void main(String[] args) {
 		if (apiKey == "") {
-			System.err.println("Youtube API key must be provided to run the microservice!");
+			System.err.println("Youtube API key must be provided to run the service!");
 			System.err.println("Exiting...");
 			
 			return;
