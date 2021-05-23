@@ -1,4 +1,4 @@
-package com.dwlooney.youtubegen;
+package com.dwlooney.youtubegen.components;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;

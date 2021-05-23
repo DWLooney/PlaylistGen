@@ -1,4 +1,4 @@
-package com.dwlooney.youtubegen;
+package com.dwlooney.youtubegen.components;
 
 public class Thumbnail {
 	

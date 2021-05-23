@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Bean;
 public class YoutubegenApplication {
 	
 	@Autowired
-	private SearchController controller;
+	private GenController controller;
 	
 	@Value("${spring.application.apiKey}")
 	private static String apiKey;
@@ -47,5 +47,27 @@ public class YoutubegenApplication {
 		return controller.searchRelated(videoID, filterTags);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/ytGenerate")
+	public String generatePlaylist(@RequestParam(value="id", defaultValue = "") String videoID,
+									@RequestParam(value="tags", defaultValue = "") String filterTags,
+									@RequestParam(value="amount", defaultValue = "10") String amt) {
+		return controller.searchRelated(videoID, filterTags);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/saveplaylist")
+	public String saveResults(@RequestParam(value="name", defaultValue = "") String name,
+			@RequestParam(value="ids", defaultValue = "") String ids) {
+		
+		return controller.insertPlaylist(name, ids);
+	}
+
+	@CrossOrigin(origins = "http://localhost:3000")
+	@GetMapping("/getplaylist")
+	public String getPlaylist(@RequestParam(value="name", defaultValue = "") String name) {
+		
+		return controller.getPlaylist(name);
+	}
 
 }

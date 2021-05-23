@@ -39,6 +39,7 @@ class Header extends React.Component {
                 <div className = "header-url">
                     <form onSubmit={this.handleSubmit} style={{backgroundColor: "white"}}>
                         <TextField fullWidth className = "input" label="Enter a url to start:" value = {this.state.url} onChange = {this.handleChange} style={{margin: "5px"}}/>
+                        
                     </form>
                 </div>
             </div>
