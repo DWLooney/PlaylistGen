@@ -16,14 +16,19 @@ public class DBConnector {
 	@Autowired
 	private PlaylistRepository playlistRepo;
 	
-	public RelatedSearchResult getResults(String searchId) {
+	public RelatedSearchResult getResults(String searchId, int amt) {
 		Optional<RelatedSearchResult> out;
 		RelatedSearchResult res;
 		out = searchRepo.findBySearchId(searchId);
 		if (out.isEmpty()) {
 			res = new RelatedSearchResult();
 		} else {
-			res = out.get();
+			if (out.get().getTotalResults() != amt) {
+				res = new RelatedSearchResult();
+			} else {
+				res = out.get();
+			}
+
 		}
 		return res;
 	}

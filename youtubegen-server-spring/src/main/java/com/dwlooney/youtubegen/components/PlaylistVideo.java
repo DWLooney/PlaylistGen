@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import org.springframework.data.annotation.Id;
-
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class PlaylistVideo {
 	
@@ -21,7 +19,7 @@ public class PlaylistVideo {
 	public PlaylistVideo() {
 		
 	}
-	@Id
+	@JsonProperty("videoId")
 	public String getVideoId() {
 		return videoId;
 	}

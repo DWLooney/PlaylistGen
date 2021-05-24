@@ -14,7 +14,7 @@ class Parent extends React.Component {
                       id: "", 
                       search: false, 
                       firstWatch: 0, 
-                      currentPlaylist: []};
+                      currentPlaylist: {name: "", items: []}};
     }
 
     videoClicked =  (videoId) => {
@@ -39,7 +39,7 @@ class Parent extends React.Component {
     updateVideoList = (list) => {
         this.setState({url:this.state.url,
             id: this.state.id, 
-            search: true, 
+            search: false, 
             firstWatch: this.state.firstWatch, 
             currentPlaylist: list})
     }
@@ -50,7 +50,7 @@ class Parent extends React.Component {
                        id: this.state.id, 
                        search: false, 
                        firstWatch: this.state.firstWatch, 
-                       currentPlaylist: [...this.state.currentPlaylist, item]})
+                       currentPlaylist: {name: this.state.currentPlaylist.name, items: [...this.state.currentPlaylist.items, item]}})
     }
 
     performSearch() {
@@ -71,8 +71,17 @@ class Parent extends React.Component {
         currentPlaylist: this.state.currentPlaylist})
     }
 
-    generatePlaylist = (amount, tags) => {
-        genPlaylist(this.state.id, amount, tags);
+    generatePlaylist = async (amount, tags) => {
+        const newPlaylist = await genPlaylist(this.state.id, amount, tags);
+        if (newPlaylist !== undefined && newPlaylist.items !== undefined) {
+            this.setState( () => {
+                return {url: this.state.url, 
+                        id: this.state.id, 
+                        search: true, 
+                        firstWatch: this.state.firstWatch,
+                        currentPlaylist: {name: "Auto Generated!", items: newPlaylist.items}} 
+                });
+        }
     }
 
     render() {
@@ -127,6 +136,7 @@ function SelectAmt(props) {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     onChange = {handleChange}
+                    defaultValue = {10}
 
                 >
                     <MenuItem value={10}>10</MenuItem>

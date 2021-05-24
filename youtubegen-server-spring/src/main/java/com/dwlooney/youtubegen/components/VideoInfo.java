@@ -34,9 +34,12 @@ public class VideoInfo {
 		this.description = snippet.get("description").asText().substring(0, 100) + "...";
 		this.channelTitle = snippet.get("channelTitle").asText();
 		JsonNode thumb = snippet.get("thumbnails").get("maxres");
-		this.thumbnail = new Thumbnail(thumb.get("url").asText(), 
-										thumb.get("width").asInt(), 
-										thumb.get("height").asInt());
+		if (thumb != null) {
+			this.thumbnail = new Thumbnail(thumb.get("url").asText(), 
+					thumb.get("width").asInt(), 
+					thumb.get("height").asInt());
+		}
+
 		
 	}
 	

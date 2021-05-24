@@ -44,7 +44,7 @@ public class YoutubegenApplication {
 	@GetMapping("/ytRelated")
 	public String getRelatedResults(@RequestParam(value="id", defaultValue = "") String videoID,
 									@RequestParam(value="tags", defaultValue = "") String filterTags) {
-		return controller.searchRelated(videoID, filterTags);
+		return controller.searchRelated(videoID);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
@@ -52,7 +52,7 @@ public class YoutubegenApplication {
 	public String generatePlaylist(@RequestParam(value="id", defaultValue = "") String videoID,
 									@RequestParam(value="tags", defaultValue = "") String filterTags,
 									@RequestParam(value="amount", defaultValue = "10") String amt) {
-		return controller.searchRelated(videoID, filterTags);
+		return controller.generateList(videoID, filterTags, amt);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
