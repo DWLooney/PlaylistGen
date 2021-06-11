@@ -76,7 +76,7 @@ class Parent extends React.Component {
                         id: this.state.id, 
                         search: true, 
                         firstWatch: this.state.firstWatch,
-                        currentPlaylist: {name: "Auto Generated!", items: newPlaylist.items}} 
+                        currentPlaylist: {name: this.state.currentPlaylist.name, items: newPlaylist.items}} 
                 });
         }
     }
