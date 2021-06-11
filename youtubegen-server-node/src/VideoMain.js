@@ -2,7 +2,6 @@
 import React from 'react';
 import { Paper } from '@material-ui/core';
 function VideoMain(props) {
-    console.log(props.url + '?autoplay=' + props.firstWatch)
     return (
         <Paper style = {{padding: "10px"}}>
             <div className = "yt-embed" style = {{paddingBottom: "56.25%", position:"relative", height: "0", textAlign: "center"}}>

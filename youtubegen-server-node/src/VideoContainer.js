@@ -7,7 +7,6 @@ import {getSearchResults} from'./api/search'
 
 function VideoContainer(props) {
     const [results, setResults] = useState([]);
-    console.log("new container...")
     //Instantiate output on new api
     useEffect(() => {
         async function callAPI() {

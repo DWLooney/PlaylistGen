@@ -18,7 +18,6 @@ class Parent extends React.Component {
     }
 
     videoClicked =  (videoId) => {
-        console.log("clicked");
         this.setState({url: "https://www.youtube.com/embed/" + videoId, 
                        id: videoId, 
                        search: false, 
@@ -45,7 +44,6 @@ class Parent extends React.Component {
     }
 
     videoAdded = (item) => {
-        console.log(this.state.currentPlaylist)
         this.setState({url:this.state.url,
                        id: this.state.id, 
                        search: false, 
@@ -54,7 +52,6 @@ class Parent extends React.Component {
     }
 
     performSearch() {
-        console.log("performing search...")
         this.setState((state, props) => { 
             return {url: this.state.url, 
                     id: this.state.id, 
@@ -118,7 +115,6 @@ function SelectAmt(props) {
     const [amount, setAmount] = React.useState({amt: '', tags: ''})
 
     const handleChange = (event) => {
-        console.log(event.target.value);
         const amt = event.target.value;
         setAmount({amt: amt, tags: amount.tags});
     }
