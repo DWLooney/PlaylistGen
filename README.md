@@ -5,7 +5,7 @@ To start, enter a valid YouTube url, and then click "Generate Playlist", or you 
 To save a playlist, enter the name and click "save".
 
 ## Required depencies:
--Java 1.9/Maven  
+-Java 11/Maven  
 -NodeJS/NPM  
 -MongoDB  
 
