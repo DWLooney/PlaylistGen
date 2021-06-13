@@ -14,7 +14,7 @@ function VideoContainer(props) {
                 results.length = 0;
             }
             let output = await getSearchResults("", props.id);
-            if (output !== undefined) {
+            if (output !== undefined && output.items.length !== 0) {
                 for(let idx = 0; idx < output.items.length; idx++) {
                     if (output.items[idx].thumbnail !== null) {
                         results.push(<VideoCard 
@@ -27,7 +27,6 @@ function VideoContainer(props) {
                 }
                 setResults(results)
             }
-            
         }
 
         if (props.doSearch) {

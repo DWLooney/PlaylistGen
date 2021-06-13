@@ -4,7 +4,7 @@ import VideoContainer from './VideoContainer'
 import Header from './Header'
 import {genPlaylist} from './api/search'
 import { Container, Box, Button, FormControl, MenuItem, InputLabel, Select, TextField } from '@material-ui/core';
-import AddedVideos from './AddedVideos'
+import Playlist from './Playlist'
 class Parent extends React.Component {
     constructor(props){
         super(props)
@@ -103,7 +103,7 @@ class Parent extends React.Component {
                                     handleSearchRelated = {this.searchRelated}
                                     depth = {0}/>
                 </Container>
-                <AddedVideos videoList = {this.state.currentPlaylist} updateVideoList = {this.updateVideoList} handleClick = {this.videoClicked}/>
+                <Playlist videoList = {this.state.currentPlaylist} updateVideoList = {this.updateVideoList} handleClick = {this.videoClicked}/>
             </div>
         );
     }
@@ -127,14 +127,13 @@ function SelectAmt(props) {
         <div style={{width: "30%"}}>
             <Button variant = "contained" style = {{marginLeft: "2%"}} onClick = {() => props.generatePlaylist(amount.amt, amount.tags)}> Generate Playlist </Button>
             <FormControl className="genSelect" fullWidth = {true} style = {{width: "75%"}}>
-                <InputLabel id="video-amount-select"># Of Videos</InputLabel>
+                <InputLabel id="video-amount-select" style = {{marginTop: "5px"}}># Of Videos</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     onChange = {handleChange}
-                    defaultValue = {10}
-
-                >
+                    defaultValue = {10}>
+                        
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={20}>20</MenuItem>
                     <MenuItem value={30}>30</MenuItem>

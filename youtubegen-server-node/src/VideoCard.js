@@ -10,9 +10,9 @@ function VideoCard(props) {
                     <div margin = "auto">
                         <img src={props.data.thumbnail.url}  alt = "thumbnail" height = "90%" width = "50%" style={{margin:"10px"}}/>
                     </div>
-                    <Button color = "primary" onClick = {props.handleClick}> Watch Video</Button>
-                    <Button color = "primary" onClick = {props.handleAdd}> Add To Playlist</Button>
-                    <Button color = "primary" onClick = {props.handleSearchRelated}> Search Related</Button>
+                    <Button color = "primary" onClick = {() => props.handleClick()}> Watch Video</Button>
+                    <Button color = "primary" onClick = {() => props.handleAdd()}> Add To Playlist</Button>
+                    <Button color = "primary" onClick = {() => props.handleSearchRelated()}> Search Related</Button>
                 </Card>
             </Box>
     );

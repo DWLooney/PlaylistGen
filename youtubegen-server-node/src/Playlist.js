@@ -3,9 +3,9 @@ import {Button, Box, Card, List, ListItem, ListItemSecondaryAction, ListItemText
 import DeleteIcon from '@material-ui/icons/Delete';
 import {savePlaylist, loadPlaylist} from './api/search'
 
-import './AddedVideos.css';
+import './Playlist.css';
 
-function AddedVideos(props) {
+function Playlist(props) {
 
 
   const listItems = props.videoList;
@@ -14,7 +14,6 @@ function AddedVideos(props) {
 
   const handleNameChange = async (event) => {
     const newName = event.target.value;
-    console.log("name change?")
     updateList({name: newName, items: listItems.items});
   }
 
@@ -44,7 +43,7 @@ function AddedVideos(props) {
     playlistComponents.length = 0;
     for(let x = 0; x < listItems.items.length; x++) {
       playlistComponents.push(
-        <ListItem key = {x} role = {undefined} onClick = {() => handleClick(listItems.items[x].videoId)}> 
+        <ListItem button key = {x} role = {undefined} onClick = {() => handleClick(listItems.items[x].videoId)}> 
           <ListItemText id = {'list-label-' + x}>{listItems.items[x].title.substring(0, 100)}</ListItemText>
             <ListItemSecondaryAction>
               <IconButton onClick = {() => updateList({name: listItems.name, 
@@ -65,7 +64,7 @@ function AddedVideos(props) {
 
    return (
     <Box className = 'scrolled'>
-      <Card style = {{height: "500px", width: "400px", overflow: "auto"}}>
+      <Card style = {{height: "50vh", width: "20vw", overflow: "auto"}}>
         <h3 style={{textAlign: "center"}}>Playlist</h3>
         <TextField id="tags" label="Enter Name" style={{marginLeft: "5px"}} onChange = {handleNameChange}/>
         <Button variant = "contained" onClick = {handleLoad} style = {{float:"right", marginTop: "10px", }}>Load</Button>
@@ -80,4 +79,4 @@ function AddedVideos(props) {
 }
 
 
-export default AddedVideos;
+export default Playlist;

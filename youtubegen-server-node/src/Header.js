@@ -10,9 +10,9 @@ class Header extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount() {
-       this.handleChange({target: {value: 'https://www.youtube.com/watch?v=1VOWybJxQz0' }});
-    }
+    // componentDidMount() {
+    //    this.handleChange({target: {value: 'https://www.youtube.com/watch?v=1VOWybJxQz0' }});
+    // }
     handleChange(event) {
         if (event.target.value !== null) {
             this.setState({url:event.target.value});
@@ -35,7 +35,9 @@ class Header extends React.Component {
     render() {
         return (
             <div className = "headerContainer">
-                <div className = "header-text">Youtube Playlist Generator!</div>    
+                <div className = "header-text">
+                <img width = "100px" src="../yt.png" alt = "youtube logo" style ={{float:"left", paddingLeft: "10px"}}/>
+                    Youtube Playlist Generator</div>    
                 <div className = "header-url">
                     <form onSubmit={this.handleSubmit} style={{backgroundColor: "white"}}>
                         <TextField fullWidth className = "input" label="Enter a url to start:" value = {this.state.url} onChange = {this.handleChange} style={{margin: "5px"}}/>
