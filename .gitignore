@@ -1,2 +1,3 @@
 youtubegen-server-spring/src/main/resources/application.properties
 youtubegen-server-spring/src/main/resources/application.properties
+youtubegen-server-node/db/
